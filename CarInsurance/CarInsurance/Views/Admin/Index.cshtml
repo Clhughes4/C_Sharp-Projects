@@ -1,0 +1,38 @@
+﻿@using CarInsurance.ViewModels
+@model List<QuoteVm>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Admin Page</h2>
+<br />
+<div class=" row no-gutters m-3">
+    <div class=" card col-sm-14 col-md-12 col-lg-7 mx-auto shadow text-light bg-dark">
+        <div class="card-header text-center text-light bg-primary">
+            <h5 class="m-0"> Auto Quotes</h5>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Quote", "Home", FormMethod.Post))
+            {
+                foreach (var quote in Model)
+                {
+                    <div class="form-row">
+                        <div class="form-group col-sm-2">
+                            @quote.FirstName
+                        </div>
+                        <div class="form-group col-sm-3">
+                            @quote.LastName
+                        </div>
+                        <div class="form-group col-sm-5">
+                            @quote.EmailAddress
+                        </div>
+                        <div class="form-group col-sm-2">
+                            @Math.Round(quote.Quote, 2)
+                        </div>
+                    </div>
+                }
+             }
+        </div>
+    </div>
+</div>
+<br />
